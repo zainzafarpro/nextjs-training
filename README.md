@@ -33,6 +33,8 @@ const About = () => {
 export default About;
 ```
 
+> If the folder does not exist for example if we try to access localhost:3000/profile then the 404 page will be displayed, Next js automatically takes care of the routes which does not exists.
+
 ## Nested routes
 
 For example we want to create nested routes inside our nextjs app.
@@ -69,4 +71,37 @@ const PostId = ({ params }) => {
 };
 
 export default PostId;
+```
+
+## Nested Dynamic routes
+
+Now we want to create nested dynamic routes in our next js applications, to achieve that if you grasp the principle of routing in next js then this will be pretty straight forward for you.
+imagine we have a route something like `localhost:3000/blog/post/1/reviews/3`
+
+to achieve this we will now create a `reviews` folder inside our [postID]
+the page.js of `reviews` folder will fetch the all reviews of out dynamic post according to `[postID]`.
+
+```js
+"use client";
+const PostReviews = ({ params: { postID } }) => {
+  return <div>This is all reviews of post {postID}</div>;
+};
+
+export default PostReviews;
+```
+
+inside reviews folder we will now create `[reviewID]` folder to cater the dynamic route of reviews such as
+`localhost:3000/blog/post/1/reviews/5`;
+the page.js file inside `[reviewID]` will export a react component and catch the id of postID as well as reviewID.
+
+```js
+const ReviewPage = ({ params: { postID, reviewID } }) => {
+  return (
+    <div>
+      This is the Review {reviewID} of post {postID}
+    </div>
+  );
+};
+
+export default ReviewPage;
 ```
