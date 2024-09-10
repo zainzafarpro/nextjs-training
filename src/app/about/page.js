@@ -1,12 +1,5 @@
-import TestPage from "./test-page";
-
 const About = () => {
-  return (
-    <div>
-      <TestPage />
-      <a href={"/about/mypage"}>Go</a>
-    </div>
-  );
+  return <div>About page</div>;
 };
 
 export default About;
